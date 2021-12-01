@@ -10,10 +10,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.zip.Inflater
 
-class vpadapter(val context: Context, val arrayList: ArrayList<Pics>):RecyclerView.Adapter<vpadapter.MyVH>() {
-    class MyVH(val view: View) :RecyclerView.ViewHolder(view){
-        val Pic : ImageView = view.findViewById(R.id.imageView)
-        val Text : TextView = view.findViewById(R.id.textView)
+class vpadapter(val context: Context, val array: ArrayList<Pics>) : RecyclerView.Adapter<vpadapter.MyVH>(){
+    class MyVH(view: View) : RecyclerView.ViewHolder(view) {
+        val image :ImageView = view.findViewById(R.id.imageView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyVH {
@@ -22,11 +21,12 @@ class vpadapter(val context: Context, val arrayList: ArrayList<Pics>):RecyclerVi
     }
 
     override fun onBindViewHolder(holder: MyVH, position: Int) {
-        holder.Pic.setImageResource(list.list[position].image)
-        holder.Text.text = list.list[position].text
+        holder.image.setImageResource(list.list[position].image)
     }
 
     override fun getItemCount(): Int {
-        return arrayList.size
+        return array.size
     }
+
 }
+

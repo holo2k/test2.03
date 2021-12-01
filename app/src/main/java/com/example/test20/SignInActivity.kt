@@ -40,42 +40,37 @@ class SignInActivity : AppCompatActivity() {
     fun btnConnect(view: View) {
         if (email.text.isNotEmpty()) {
             if (EmailValid(email.text.toString())) {
-                // val getApi = Obj.getRetrofit()
-                // var hashMap:HashMap<String,String> = HashMap<String,String>()
-                //hashMap.put("email",email)
-                //val log_call : retrofit2.Call<login> = getApi.getAuth(hashMap)
-                //log_call.enqueue(object :retrofit2.Callback<login>{
-                //override fun onResponse(call: Call<login>, response: Response<login>) {
-                //if(response.isSuccessful){
-                val menu = Intent(this@SignInActivity, MainActivity::class.java)
-                startActivity(menu)
-                //  }
-                // else
-                // {
-                //    Toast.makeText(this@SignInActivity, "Неверный пароль", Toast.LENGTH_SHORT).show()
+                val getApi = Obj.getRetrofit()
+                val hashMap : HashMap<String,String> = HashMap<String,String>()
+                hashMap.put("email", email.text.toString())
 
-                //}
+                val log_call : retrofit2.Call<login> = getApi.getAuth(hashMap)
+                log_call.enqueue(object:retrofit2.Callback<login>{
+                    override fun onResponse(call: Call<login>, response: Response<login>) {
+                        if(response.isSuccessful){
+
+                        }
+                    }
+
+                    override fun onFailure(call: Call<login>, t: Throwable) {
+                        Toast.makeText(this@SignInActivity, t.message, Toast.LENGTH_SHORT).show()
+                    }
+                })
             }
-
-            // override fun onFailure(call: Call<login>, t: Throwable) {
-            //Toast.makeText(this@SignInActivity, t.message, Toast.LENGTH_SHORT).show()
-            //}
-            // })
-            else {
+                else {
+                    val alert = AlertDialog.Builder(this)
+                        .setTitle("Ошибка")
+                        .setMessage("Неверный email")
+                        .create()
+                        .show()
+                }
+            } else {
                 val alert = AlertDialog.Builder(this)
                     .setTitle("Ошибка")
-                    .setMessage("Неверный email")
+                    .setMessage("Не все поля заполнены епта")
                     .create()
                     .show()
             }
         }
-        else
-        {
-            val alert = AlertDialog.Builder(this)
-                .setTitle("Ошибка")
-                .setMessage("Не все поля заполнены епта")
-                .create()
-                .show()
-        }
     }
-}
+

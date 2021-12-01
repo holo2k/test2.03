@@ -25,6 +25,8 @@ class GuideActivity : AppCompatActivity() {
 
         TabLayoutMediator(tabLayout, vp){_,_ ->}.attach()
 
+
+
         vp.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback(){
             override fun onPageSelected(position: Int) {
                 if(position == 3){
