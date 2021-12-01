@@ -39,7 +39,7 @@ class GuideActivity : AppCompatActivity() {
 
     fun guide(view: View) {
         if(vp.currentItem == 3){
-            val intent = Intent(this,MainActivity::class.java)
+            val intent = Intent(this,SignInActivity::class.java)
             startActivity(intent)
         }
         else

@@ -49,6 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="btnConnect"
         android:text="Войти"
         android:background="@drawable/btn_shape"
         android:textAllCaps="false"
